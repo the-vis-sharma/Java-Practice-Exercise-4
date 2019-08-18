@@ -1,0 +1,19 @@
+##########################
+## Eclipse
+##########################
+.metadata
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+
+src/rajyaSabhaData.csv
+bin/rajyaSabhaData.csv
+
