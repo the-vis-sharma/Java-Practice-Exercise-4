@@ -28,5 +28,12 @@ class CSVReaderTest {
 	void testFileHandlingException() {
 		assertThrows(FileNotFoundException.class, () -> reader.read("/home/vishnu/Downloads/rajyaSabhaData1.csv", true));
 	}
+	
+	@Test 
+	void testInvalidCSV() {
+		String actualHeader = "id,answer_date,ministry,question_type,question_no,question_description,answer";
+		// String expectedHeader = "id,answer_date,ministry,question_type,question_no,question_by,question_title,question_description,answer";
+		assertFalse(reader.validateCSV(actualHeader), "Validating CSV File");
+	}
 
 }

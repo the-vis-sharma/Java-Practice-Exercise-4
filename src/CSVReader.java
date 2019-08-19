@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CSVReader {
 	public ArrayList<QuestionRecord> read(String path, boolean hasHeader) throws FileNotFoundException, IOException {
@@ -20,6 +21,10 @@ public class CSVReader {
 			boolean isHeaderSkipped = false;
 			while((row = bufferReader.readLine()) != null) {
 				if(hasHeader && !isHeaderSkipped) {
+					if (!validateCSV(row)) {
+						System.out.println("CSV file is not valid.");
+						return records;
+					}
 					isHeaderSkipped = true;
 					continue;
 				}
@@ -43,5 +48,14 @@ public class CSVReader {
 			}
 		}
 		return records;
+	}
+	
+	public boolean validateCSV(String header) {
+		String[] actualHeaders = {"id", "answer_date", "ministry", 
+				"question_type","question_no", "question_by", 
+				"question_title", "question_description", "answer"
+				};
+		
+		return Arrays.equals(actualHeaders, header.split(","));
 	}
 }
