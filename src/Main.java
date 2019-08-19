@@ -19,15 +19,15 @@ public class Main {
 			System.out.println(e.getLocalizedMessage());
 		}
 		
-		System.out.println(records.size());
+		// System.out.println(records.size());
 		
 		DataFilters filters = new DataFilters();
 		
 		ArrayList<QuestionRecord> uniqueRecords = filters.unique(records);
-		System.out.println(uniqueRecords.size());
+		// System.out.println(uniqueRecords.size());
 		
 		LinkedHashMap<String, ArrayList<QuestionRecord>> dataByMinistry = filters.groupByMinistry(uniqueRecords);
-		System.out.println(dataByMinistry.size());
+		// System.out.println(dataByMinistry.size());
 		
 		for(Map.Entry<String, ArrayList<QuestionRecord>> ministry : dataByMinistry.entrySet()) {
 			System.out.println(ministry.getKey() + " : " + ministry.getValue().size());
